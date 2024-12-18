@@ -1,0 +1,4 @@
+INFO     commons.request_util:request_util.py:16 {'请求路径': 'http://localhost/ecmobile/?url=/user/signin', '请求方法': 'post', '请求参数': {'name': 'vip', 'password': 'vip'}, '请求头': {'Accept': 'application/json,text/javascript,/;q=0.01'}}
+INFO     commons.request_util:extract_util.py:37 写入了中间变量sid值e96ac2bb5a59f287d3557cd6b55018cdcadaa717
+INFO     commons.request_util:extract_util.py:37 写入了中间变量uid值2
+INFO     commons.request_util:assert_util.py:26 断言成功断言响应状态码是否为200, 期望值200, 实际值200

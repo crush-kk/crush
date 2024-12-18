@@ -1,0 +1,7 @@
+pytest >= 8.3.3
+pytest-html >=  4.1.1
+pytest-xdist >= 3.6.1
+pytest-ordering >= 0.6
+pytest-rerunfailures >= 15.0
+pytest-base-url >= 2.1.0
+allure-pytest >= 2.13.5
