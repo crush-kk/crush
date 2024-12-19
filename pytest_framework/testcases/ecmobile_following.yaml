@@ -1,0 +1,25 @@
+-
+  feature: ecshop商城
+  story: 登录端口
+  title: 验证ecshop登录接口登录成功
+  request:
+    method: "post"
+    url: "${env(web_url)}?url=/user/signin"
+    headers:
+      Accept: "application/json,text/javascript,/;q=0.01"
+    data:
+      name: $ddt{name}
+      password: $ddt{password}
+  extract:
+    uid: [ json, "$.data.session.uid", 0 ]
+    sid: [ json, "$.data.session.sid", 0 ]
+  parametrize:
+    - ["name", "password"]
+    - ["echsop", "ecshop"]
+    - ["vip", "vip"]
+  validate:
+    equals:
+      断言响应状态码是否为200: [200, status_code]
+#   contains:
+#   db_equals:
+#   db_contains:

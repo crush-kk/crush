@@ -87,3 +87,61 @@ delect 不会删除索引。下次插入数据保持下一个索引。
 加快查询速度
 -- 11、sql语言分为哪几类？
 DDL、DQL、DML、DCL
+
+
+#存储过程
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `generate_student`(v_left int, v_right int, account_prefix varchar(20), v_password varchar(20))
+BEGIN
+  declare v_age int;
+  declare v_gender char(1);
+  declare v_i int default v_left;
+  
+  lp: loop
+    if v_i > v_right then
+      leave lp;
+    end if;
+    #设置随机年龄段在20 ~ 40岁之间
+    set v_age = 20 + floor(rand() * 21);
+    #随机设置性别 F男 M女
+    set v_gender = elt(1 + floor(rand() * 2),'F', 'M');
+    insert into student(sid, account, `password`, sname, age, gender) values(v_i, concat(account_prefix, v_i), v_password,  concat(account_prefix, v_i), v_age, v_gender);
+    set v_i = v_i + 1;
+  end loop;
+END
+
+#游标的使用
+-- 1.定义一个游标
+-- 2.定义游标退出机制
+-- 3.开启游标
+-- 4.做一个死循环
+-- 5.使用游标
+-- 6.关闭游标
+CREATE DEFINER=`root`@`localhost` PROCEDURE `change_age`()
+BEGIN
+declare v_sid int;
+declare v_age int;
+declare done tinyint default false;
+-- 1. 定义一个游标
+ declare stu_cs cursor for select sid, age from student;
+ -- 2. 定义游标退出机制
+ declare continue handler for not found set done = true;
+ -- 3. 开启游标
+ open stu_cs;
+-- 4. 定义一个死循环
+lp: loop
+  if done then 
+    leave lp;
+  end if;
+-- 5.使用游标
+  fetch stu_cs into v_sid, v_age;
+  if v_age % 2 = 1 then
+    update student set age = age + 1 where sid = v_sid;
+  end if;
+end loop;
+-- 6. 关闭游标
+close stu_cs;
+ 
+END
+
+
