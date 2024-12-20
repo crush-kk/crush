@@ -1,0 +1,13 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"
+:param case_info:
+:return:
+","2068","验证ecshop登录接口成功","testcases","Fri Dec 20 09:16:51 CST 2024","passed","Fri Dec 20 09:16:53 CST 2024","TestAllCase","test_all_case","",""
+"
+:param case_info:
+:return:
+","2069","验证是否搜索到商品","testcases","Fri Dec 20 09:16:53 CST 2024","passed","Fri Dec 20 09:16:55 CST 2024","TestAllCase","test_all_case","",""
+"
+:param case_info:
+:return:
+","2066","验证商品详情","testcases","Fri Dec 20 09:16:55 CST 2024","passed","Fri Dec 20 09:16:57 CST 2024","TestAllCase","test_all_case","",""
