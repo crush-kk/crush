@@ -80,10 +80,15 @@ delete * from <表名>;
 drop、truncate 是DDL数据定义语言
 delect 是DML数据操纵语言
 -- 4.日志
-
+drop 不可回滚
+delete 可回滚
+truncate 回滚
 -- 5.表中如果有自增变量
-delect 不会删除索引。下次插入数据保持下一个索引。
+delect 自增初始值不会重置
+truncate 自增初始值重置
 -- 10、索引的创建与作用？
+create index 索引名字 on 表格名(字段名,字段);
+alter table <表名> add index 索引名(字段名);
 加快查询速度
 -- 11、sql语言分为哪几类？
 DDL、DQL、DML、DCL
